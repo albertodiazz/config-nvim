@@ -2,6 +2,7 @@ call plug#begin("~/.config/nvim/plugged")
 
   "Themes"
   Plug 'tomasr/molokai'
+  Plug 'dracula/vim'
   "Plugins de Python"
   Plug 'vim-python/python-syntax'
   Plug 'davidhalter/jedi-vim'
@@ -22,9 +23,10 @@ call plug#end()
 
 "Apariencia"
 syntax on
-colorscheme molokai 
+colorscheme dracula 
 let g:python_highlight_all = 1
 let g:fzf_layout = { 'down': '~20%' }
+highlight clear LineNr ctermfg=grey ctermbg=white
 
 "Workflow"
 set splitright
