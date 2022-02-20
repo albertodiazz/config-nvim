@@ -15,8 +15,11 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'jiangmiao/auto-pairs'
 
   "Telescope
+  Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-telescope/telescope-fzy-native.nvim'
+  Plug 'BurntSushi/ripgrep'
 
   "Auto update files"
   Plug 'TheZoq2/neovim-auto-autoread' 
@@ -30,6 +33,10 @@ call plug#begin("~/.config/nvim/plugged")
   "Github WorkFlow
   Plug 'airblade/vim-gitgutter'
 
+  "Comentar y descomentar
+  Plug 'tpope/vim-commentary'
+  "Indent Python
+  Plug 'Vimjas/vim-python-pep8-indent'
 
 call plug#end()
 
