@@ -29,6 +29,11 @@ call plug#begin("~/.config/nvim/plugged")
   "React Workflow"
   Plug 'SirVer/ultisnips'
   Plug 'mlaursen/vim-react-snippets'
+  Plug 'pangloss/vim-javascript'
+  Plug 'mxw/vim-jsx'
+  Plug 'mattn/emmet-vim'
+  Plug 'w0rp/ale'
+
 
   "Github WorkFlow
   Plug 'airblade/vim-gitgutter'
@@ -39,6 +44,9 @@ call plug#begin("~/.config/nvim/plugged")
   Plug 'Vimjas/vim-python-pep8-indent'
 
 call plug#end()
+
+let g:ale_lint_on_enter = 1
+let g:ale_fix_on_save = 1
 
 "Apariencia"
 syntax on
@@ -78,3 +86,5 @@ nnoremap <silent> <c-Down> :vertical resize +1<CR>
 "Github keyMaps
 noremap ]h :GitGutterNextHunk<CR>
 noremap [h :GitGutterPrevHunk<CR>
+
+
