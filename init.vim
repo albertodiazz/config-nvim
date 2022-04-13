@@ -30,13 +30,13 @@ Plug 'TheZoq2/neovim-auto-autoread'
 " FIXME
 Plug 'nvie/vim-flake8'
 
-"React Workflow"
+" Aun no se si este plugin me sirva
 Plug 'SirVer/ultisnips'
+"React Workflow"
 Plug 'mlaursen/vim-react-snippets'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'mattn/emmet-vim'
-Plug 'w0rp/ale'
 
 
 "Github WorkFlow
@@ -47,10 +47,19 @@ Plug 'tpope/vim-commentary'
 "Indent Python
 Plug 'Vimjas/vim-python-pep8-indent'
 
+"Unity Workflow
+Plug 'OmniSharp/omnisharp-vim'
+
+" Ale lint de sintaxys
+Plug 'dense-analysis/ale'
+" Autocomplete que instale para Unity
+Plug 'prabirshrestha/asyncomplete.vim'
+
+
 call plug#end()
 
-let g:ale_lint_on_enter = 1
-let g:ale_fix_on_save = 1
+" let g:ale_lint_on_enter = 1
+" let g:ale_fix_on_save = 1
 
 "Apariencia"
 let g:airline#extensions#tabline#enabled = 1
@@ -67,6 +76,13 @@ set relativenumber
 " FIXME
 let g:flake8_show_in_file=1  " show
 let g:flake8_show_in_gutter=1  " show"
+
+
+" Con esto le decimos que estamos usando WSL
+let g:OmniSharp_translate_cygwin_wsl = 1
+" Tell ALE to use OmniSharp for linting C# files, and no other linters.
+let g:ale_linters = { 'cs': ['OmniSharp'] }
+
 
 " IMPORTANTE solo ocupar cuando necesitemos ver los cambios en archivos
 " en timepo real, tipo un csv como base de datos etc
@@ -94,7 +110,7 @@ nnoremap <silent> <c-Down> :vertical resize +1<CR>
 nnoremap <tab> :bnext<CR>
 
 "Github keyMaps
-noremap ]h :GitGutterNextHunk<CR>
-noremap [h :GitGutterPrevHunk<CR>
+" noremap ]h :GitGutterNextHunk<CR>
+" noremap [h :GitGutterPrevHunk<CR>
 " FIXME
 autocmd FileType python map <buffer> <C-l> :call flake8#Flake8()<CR>
