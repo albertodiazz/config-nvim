@@ -48,6 +48,7 @@ Plug 'prabirshrestha/asyncomplete.vim'
 " Para instalar esto tuve que ir a la carpeta
 " plugged/markdown-preview.nvim/app y correr yarn install en WSL
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+Plug 'junegunn/goyo.vim'
 call plug#end()
 
 "Apariencia"
