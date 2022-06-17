@@ -2,11 +2,6 @@ call plug#begin("~/.config/nvim/plugged")
 "Themes"
 Plug 'dracula/vim'
 Plug 'vim-airline/vim-airline'
-"Plugins de Python"
-Plug 'vim-python/python-syntax'
-" FIXME : Me parece que el autocompletado no
-" lee librerias como time
-Plug 'davidhalter/jedi-vim'
 "BUSCADORES
 "Con este busco archivos de forma rapida"
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -38,6 +33,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-commentary'
 "Indent Python
 Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'vim-python/python-syntax'
+Plug 'davidhalter/jedi-vim'
 "Unity Workflow
 Plug 'OmniSharp/omnisharp-vim'
 " Ale lint de sintaxys
@@ -49,6 +46,9 @@ Plug 'prabirshrestha/asyncomplete.vim'
 " plugged/markdown-preview.nvim/app y correr yarn install en WSL
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'junegunn/goyo.vim'
+" GO
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 "Apariencia"
@@ -65,6 +65,7 @@ set splitright
 set number relativenumber
 hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg
 " ConfigPlugins
+" Esto configura el servidor donde levanta los archivos .md
 let g:mkdp_refresh_slow = 0
 let g:mkdp_port = '3000'
 " let g:mkdp_markdown_css = expand("~/github-markdown.css")
@@ -73,7 +74,7 @@ let g:mkdp_port = '3000'
 let g:flake8_show_in_file=1  " show
 let g:flake8_show_in_gutter=1  " show"
 
-
+" Setup UNITY
 " Con esto le decimos que estamos usando WSL
 let g:OmniSharp_translate_cygwin_wsl = 1
 " Tell ALE to use OmniSharp for linting C# files, and no other linters.
@@ -84,8 +85,6 @@ nnoremap <C-b> :NERDTreeToggle<CR>
 nnoremap <C-n> :Telescope<CR>
 nnoremap <C-f> :Telescope find_files<CR>
 nnoremap <C-g> :Telescope live_grep<CR>
-" nnoremap <C-p> :vsplit +term<CR>
-nnoremap <C-;> :sp +term<CR>
 " nnoremap <C-f> :FZF<CR>
 nnoremap <C-d> :q<CR>
 nnoremap <C-w> :bd<CR>
@@ -93,9 +92,19 @@ nnoremap <C-s> :w<CR>
 nnoremap <silent> <c-Up> :vertical resize -1<CR>
 nnoremap <silent> <c-Down> :vertical resize +1<CR>
 nnoremap <tab> :bnext<CR>
+" Para abrir la terminal
+" nnoremap <C-p> :vsplit +term<CR>
+" nnoremap <C-;> :sp +term<CR>
+let mapleader = ","
+nnoremap <Leader>ts :vsplit +term <CR>
+nnoremap <Leader>tv :sp +term<CR>
+tnoremap <Esc> <C-\><C-n>
+" Esto centra mi cursor
+" Con Leader activamos la accion al presionar dos veces las teclas
+" No necesita de mi leader map
+nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
 
-"Github keyMaps
-" noremap ]h :GitGutterNextHunk<CR>
-" noremap [h :GitGutterPrevHunk<CR>
-" FIXME
+"TODO: FIXME [Flask no funciona de forma automatica]
 autocmd FileType python map <buffer> <C-l> :call flake8#Flake8()<CR>
+" Para que al abrir la terminal desdes vim no me salgan los numeros
+autocmd TermOpen * setlocal nonumber norelativenumber
