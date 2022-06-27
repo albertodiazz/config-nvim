@@ -49,6 +49,8 @@ Plug 'junegunn/goyo.vim'
 " GO
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Similar al Grep de Telescope
+Plug 'dyng/ctrlsf.vim'
 call plug#end()
 
 "Apariencia"
@@ -79,6 +81,11 @@ let g:flake8_show_in_gutter=1  " show"
 let g:OmniSharp_translate_cygwin_wsl = 1
 " Tell ALE to use OmniSharp for linting C# files, and no other linters.
 let g:ale_linters = { 'cs': ['OmniSharp'] }
+
+" acp 
+" Por alguna razon eso hace que no me aparesca el Autocomplete
+" en live_grep lo cual es bueno ya que me ocasionaba coasas extrannas
+let g:acp_enableAtStartup = 0
 
 nnoremap <C-b> :NERDTree<CR>     
 nnoremap <C-b> :NERDTreeToggle<CR>
